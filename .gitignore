@@ -1,25 +1,21 @@
-
+# Ignore IDE and OS-specific files
 *.iml
 .idea/
-
-
 .DS_Store
 
-
+# Ignore Gradle cache and local properties
 .gradle/
 gradle.properties
-
-
 local.properties
 
-
+# Ignore build and generated files
 /build/
 .externalNativeBuild/
 .cxx/
 captures/
 output.json
 
-
+# Ignore APK, AAB, and build artifacts
 *.apk
 *.aab
 
