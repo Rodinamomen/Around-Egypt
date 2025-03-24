@@ -1,9 +1,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.AroundEgypt" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:textViewStyle">@style/customTextAppearanceBodyMedium</item>
+
+    </style>
+    <style name="Theme.AroundEgypt" parent="Base.Theme.AroundEgypt" />
+    <style name="Font.Bold" parent="TextAppearance.Material3.BodySmall">
+        <item name="fontFamily">@font/app_font_bold</item>
     </style>
 
-    <style name="Theme.AroundEgypt" parent="Base.Theme.AroundEgypt" />
+    <style name="Font.Medium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">@font/app_font_medium</item>
+    </style>
+    <style name="customTextAppearanceBodyLarge" parent="customTextAppearanceBodyMedium">
+        <item name="fontFamily">@font/app_font_bold</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="customTextAppearanceBodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">@font/app_font_medium</item>
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
