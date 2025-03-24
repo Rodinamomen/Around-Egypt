@@ -30,8 +30,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.experienceState.collect { state ->
                     when (state) {
-                        is Resource.Loading -> if (state.isLoading) {
-                            Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                        is Resource.Loading -> {
+                            handleProgressBar(state.isLoading, binding.progressBar)
                         }
 
                         is Resource.Success -> {
@@ -54,12 +54,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         }
 
                         is Resource.Failure ->
-                            Toast.makeText(
-                                requireContext(),
-                                "${state.exception}",
-                                Toast.LENGTH_SHORT
-                            ).show()
-
+                            Log.d("exception", "onViewCreated: ${state.exception}")
                     }
                 }
             }
@@ -68,8 +63,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.recommendExperienceState.collect { state ->
                     when (state) {
-                        is Resource.Loading -> if (state.isLoading) {
-                            Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                        is Resource.Loading -> {
+                            handleProgressBar(state.isLoading, binding.progressBar)
                         }
 
                         is Resource.Success -> {
@@ -91,11 +86,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         }
 
                         is Resource.Failure ->
-                            Toast.makeText(
-                                requireContext(),
-                                "${state.exception}",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Log.d("exception", "onViewCreated: ${state.exception}")
 
                     }
                 }
@@ -104,8 +95,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.likeExperienceState.collect { state ->
                 when (state) {
-                    is Resource.Loading -> if (state.isLoading) {
-                        Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                    is Resource.Loading -> {
+                        handleProgressBar(state.isLoading, binding.progressBar)
                     }
 
                     is Resource.Success -> {
@@ -115,8 +106,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         }
                     }
 
-                    is Resource.Failure ->
-                        Log.d("likess", "onViewCreated:${state.exception} ")
+                    is Resource.Failure -> {
+                        Log.d("exception", "onViewCreated: ${state.exception}")
+                    }
 
                 }
             }

@@ -2,7 +2,7 @@ package com.example.aroundegypt.features.home.domain.interactor
 
 import com.example.aroundegypt.common.data.models.Resource
 import com.example.aroundegypt.common.data.models.exception.AroundEgyptException
-import com.example.aroundegypt.common.domain.remote.model.Experiences
+import com.example.aroundegypt.features.home.domain.models.LikesResponse
 import com.example.aroundegypt.features.home.domain.repo.IHomeRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -11,11 +11,10 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 
-internal class SearchUC(private val homeRepo: IHomeRepo) {
-    operator fun invoke(title: String): Flow<Resource<Experiences>> = flow {
+class LikeExperienceUC(private val homeRepo: IHomeRepo) {
+    operator fun invoke(id: String): Flow<Resource<LikesResponse>> = flow {
         emit(Resource.Loading(true))
-
-        val remoteResponse = homeRepo.search(title)
+        val remoteResponse = homeRepo.likeExperience(id)
         emit(Resource.Success(remoteResponse))
     }.catch { throwable ->
         val failureResource = if (throwable is AroundEgyptException) throwable else

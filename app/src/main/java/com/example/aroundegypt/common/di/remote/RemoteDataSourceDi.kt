@@ -26,7 +26,7 @@ internal object RemoteDataSourceDi {
     @Singleton
     fun provideRetrofit(gson: Gson): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("aroundegypt.34ml.com/api/v2/experiences/")
+            .baseUrl("https://aroundegypt.34ml.com/api/v2/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
