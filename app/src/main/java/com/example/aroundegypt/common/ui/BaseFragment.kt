@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseFragment<VBinding : ViewBinding>(private val inflateMethod: (LayoutInflater, ViewGroup?, Boolean) -> VBinding) :Fragment(){
+abstract class BaseFragment<VBinding : ViewBinding>(private val inflateMethod: (LayoutInflater, ViewGroup?, Boolean) -> VBinding) :
+    ILoading by Loading, Fragment() {
     private var _binding: VBinding? = null
     val binding get() = _binding!!
     override fun onCreateView(

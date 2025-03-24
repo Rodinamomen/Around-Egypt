@@ -11,11 +11,10 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 
-internal class SearchUC(private val homeRepo: IHomeRepo) {
-    operator fun invoke(title: String): Flow<Resource<Experiences>> = flow {
+internal class GetExperiencesUC(private val homeRepo: IHomeRepo) {
+    operator fun invoke(): Flow<Resource<Experiences>> = flow {
         emit(Resource.Loading(true))
-
-        val remoteResponse = homeRepo.search(title)
+        val remoteResponse = homeRepo.getExperiences()
         emit(Resource.Success(remoteResponse))
     }.catch { throwable ->
         val failureResource = if (throwable is AroundEgyptException) throwable else
