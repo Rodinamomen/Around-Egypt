@@ -75,7 +75,8 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     //room
     implementation(libs.androidx.room.runtime)
-
+    //glide
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 }
 kapt {
     correctErrorTypes = true
